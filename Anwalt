@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Anwaltskanzlei</title>
+    <style>
+        html, body {
+            margin: 0;
+            padding: 0;
+            height: 100%;
+            font-family: Arial, sans-serif;
+        }
+
+        body {
+            background-image: url('Background.jpg');
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+            color: white;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            overflow: hidden;
+        }
+
+        .overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.5);
+        }
+
+        .header {
+            text-align: center;
+            position: relative;
+        }
+
+        .title {
+            font-size: 80px;
+            margin-bottom: 20px;
+        }
+
+        .subtitle {
+            font-size: 24px;
+            margin-bottom: 20px;
+        }
+
+        .menu {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 20px;
+            margin-top: 20px;
+        }
+
+        .person {
+            text-align: center;
+        }
+
+        .person img {
+            width: 120px;
+            height: 120px;
+            border-radius: 50%;
+            object-fit: cover;
+            cursor: pointer;
+            margin-bottom: 10px;
+        }
+
+        .person p {
+            margin-top: 0;
+            transition: font-size 0.2s;
+        }
+
+        .person a {
+            text-decoration: none;
+            color: white;
+        }
+
+        .person a:hover p {
+            font-size: 18px;
+        }
+
+        .iframe-container {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.8);
+            display: none;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .iframe-container iframe {
+            width: 80%;
+            height: 80%;
+            border: none;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+        }
+
+        .iframe-container.active {
+            display: flex;
+        }
+
+        .close-button {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            background-color: transparent;
+            color: white;
+            font-size: 24px;
+            border: none;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+    <div class="overlay"></div>
+    <div class="header">
+        <h1 class="title">Anwaltskanzlei</h1>
+        <h2 class="subtitle">Izumi, Malia und Alice</h2>
+        <div class="menu">
+            <div class="person">
+                <a href="#" onclick="showIframe('izumi.html')">
+                    <img src="izumipic.jpg" alt="Izumi">
+                    <p>Izumi</p>
+                </a>
+            </div>
+            <div class="person">
+                <a href="#" onclick="showIframe('malia.html')">
+                    <img src="maliapic.jpg" alt="Malia">
+                    <p>Malia</p>
+                </a>
+            </div>
+            <div class="person">
+                <a href="#" onclick="showIframe('alice.html')">
+                    <img src="alicepic.jpg" alt="Alice">
+                    <p>Alice</p>
+                </a>
+            </div>
+        </div>
+    </div>
+
+    <div id="iframe-container" class="iframe-container">
+        <button class="close-button" onclick="closeIframe()">×</button>
+        <iframe id="iframe" src=""></iframe>
+    </div>
+
+    <script>
+        function showIframe(src) {
+            var iframeContainer = document.getElementById('iframe-container');
+            var iframe = document.getElementById('iframe');
+            iframe.src = src;
+            iframeContainer.classList.add('active');
+        }
+
+        function closeIframe() {
+            var iframeContainer = document.getElementById('iframe-container');
+            iframeContainer.classList.remove('active');
+            var iframe = document.getElementById('iframe');
+            iframe.src = "";
+        }
+    </script>
+</body>
+</html>
